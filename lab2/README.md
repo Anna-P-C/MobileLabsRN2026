@@ -26,11 +26,10 @@
    git clone [https://github.com/Anna-P-C/MobileLabsRN2026.git](https://github.com/Anna-P-C/MobileLabsRN2026.git)
 Перейти до каталогу лабораторної роботи:cd MobileLabsRN2026/lab1 2.Встановити залежності:npm install 3.Запустити Metro Bundler:npx expo start 4.Відсканувати отриманий QR-код через застосунок Expo Go на телефоні.
 ## 3. Результати тестування застосунку
-## 3. Результати тестування застосунку
 
 | Авторизація | Стрічка новин (FlatList) | Деталі новини ([id]) | Бічне меню (Drawer) | Довідковий центр FAQ |
 |:---:|:---:|:---:|:---:|:---:|
-| <img src="./screenshots/лаб%202.1.jpg" width="160" /> | <img src="./screenshots/лаб%202.2.jpg" width="160" /> | <img src="./screenshots/лаб%202.3.png" width="160" /> | <img src="./screenshots/ла62%20.4..png" width="160" /> | <img src="./screenshots/лаб%202.5.jpg" width="160" /> |
+| <img src="./screenshots/лаб%202.1.jpg" width="160" /> | <img src="./screenshots/лаб%202.2.jpg" width="160" /> | <img src="./screenshots/лаб%202.3.jpg" width="160" /> | <img src="./screenshots/ла62%20.4..jpg" width="160" /> | <img src="./screenshots/лаб%202.5.jpg" width="160" /> |
 ## Висновок з відповідями на контрольні питання:
 1. **Як працює вкладена навігація в Expo Router?**  
    Expo Router будує навігацію за структурою папок. Кожна папка з файлом `_layout.jsx` створює свій окремий навігатор. Це дозволяє вкладати один навігатор в інший — наприклад, звичайний стек переходів між екранами `(news)` покласти всередину бічного меню `(drawer)`. А щоб не було подвійної шапки вгорі екрана, у внутрішньому макеті вимикається заголовок (`headerShown: false`).
