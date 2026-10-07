@@ -23,7 +23,7 @@ export default function ProfileScreen() {
         <View style= { styles.container } >
         <StatusBar barStyle="dark-content" backgroundColor = "#FFFFFF" />
 
-        {/* Верхня спільна шапка */ }
+       
             < View style = { styles.header } >
                 <Image
           source={ { uri: 'https://upload.wikimedia.org/wikipedia/commons/2/25/Zhytomyr_Polytechnic_logo.png' } }
@@ -39,7 +39,7 @@ export default function ProfileScreen() {
                             </View>
 
                             < ScrollView contentContainerStyle = { styles.scrollContainer } showsVerticalScrollIndicator = { false} >
-                            {/* Синій банер з іконками закриття/збереження та аватаром */ }
+                           
                                 < View style = { styles.bannerWrapper } >
                                     <View style={ styles.banner }>
                                         <View style={ styles.bannerActions }>
@@ -56,7 +56,7 @@ export default function ProfileScreen() {
                                                                     </View>
                                                                     </View>
 
-    {/* Секція ПІБ */ }
+    
     <View style={ styles.sectionBlock }>
         <Text style={ styles.sectionLabel }> ПІБ </Text>
             < TextInput
@@ -67,7 +67,7 @@ export default function ProfileScreen() {
         />
         </View>
 
-    {/* Секція КОНТАКТИ */ }
+ 
     <View style={ styles.cardContainer }>
         <Text style={ styles.cardHeaderTitle }> КОНТАКТИ </Text>
 
@@ -88,7 +88,7 @@ export default function ProfileScreen() {
         />
         </View>
 
-    {/* Секція НАЛАШТУВАННЯ */ }
+   
     <View style={ styles.cardContainer }>
         <Text style={ styles.cardHeaderTitle }> НАЛАШТУВАННЯ </Text>
             < View style = { styles.switchRow } >

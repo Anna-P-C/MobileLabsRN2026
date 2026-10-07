@@ -18,7 +18,7 @@ export default function HomeScreen() {
         <View style= { styles.container } >
         <StatusBar barStyle="dark-content" backgroundColor = "#FFFFFF" />
 
-        {/* Верхня спільна шапка */ }
+    
             < View style = { styles.header } >
                 <Image
           source={ { uri: 'https://upload.wikimedia.org/wikipedia/commons/2/25/Zhytomyr_Polytechnic_logo.png' } }
@@ -31,7 +31,7 @@ export default function HomeScreen() {
                     < View style = { styles.headerRightSpacer } />
                         </View>
 
-    {/* Поле пошуку */ }
+    
     <View style={ styles.searchWrapper }>
         <View style={ styles.searchContainer }>
             <Ionicons name="search" size = { 18} color = "#8E8E93" style = { styles.searchIcon } />
@@ -45,9 +45,9 @@ export default function HomeScreen() {
         </View>
         </View>
 
-    {/* Стрічка новин */ }
+ 
     <ScrollView contentContainerStyle={ styles.scrollContainer } showsVerticalScrollIndicator = { false} >
-    {/* Новина 1 (Cybersecurity) */ }
+
         < View style = { styles.card } >
             <Image
             source={
@@ -68,7 +68,7 @@ export default function HomeScreen() {
         </View>
         </View>
 
-    {/* Новина 2 (Конференція) */ }
+
     <View style={ styles.card }>
         <Image
             source={

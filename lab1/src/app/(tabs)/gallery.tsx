@@ -26,7 +26,6 @@ export default function GalleryScreen() {
         <View style= { styles.container } >
         <StatusBar barStyle="dark-content" backgroundColor = "#FFFFFF" />
 
-        {/* Верхня спільна шапка */ }
             < View style = { styles.header } >
                 <Image
           source={ { uri: 'https://upload.wikimedia.org/wikipedia/commons/2/25/Zhytomyr_Polytechnic_logo.png' } }
@@ -39,7 +38,7 @@ export default function GalleryScreen() {
                     < View style = { styles.headerRightSpacer } />
                         </View>
 
-    {/* Заголовок галереї */ }
+   
     <View style={ styles.galleryHeader }>
         <Text style={ styles.galleryTitle }> Фотогалерея </Text>
             < View style = { styles.viewIcons } >
@@ -52,7 +51,7 @@ export default function GalleryScreen() {
                                 </View>
                                 </View>
 
-    {/* Сітка 2 колонки */ }
+
     <FlatList
         data={ GALLERY_ITEMS }
     keyExtractor = {(_, index) => index.toString()
