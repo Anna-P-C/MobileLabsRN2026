@@ -1,56 +1,41 @@
-# Welcome to your Expo app 👋
+# Лабораторна робота №3
+**Тема:** Expo Router: кастомізація навігаційних компонентів, нативні модальні вікна та віртуалізація списків.
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Опис проєкту
+Прототип модуля адміністрування порталу новин, побудований на файловій маршрутизації **Expo Router**. Проєкт включає авторизацію, кастомне бокове меню (`Custom Drawer`), дашборд аналітики, управління новинами та користувачами, а також системний журнал аудиту.
 
-## Get started
+## Скріншоти роботи додатку
+**Усі скріншоти інтерфейсу (авторизація, дашборд, новини, модальні вікна, списки користувачів та журнал логів) знаходяться в папці:**  
+**`./screenshots`**
 
-1. Install dependencies
+## Основні можливості
+- **Авторизація**: Екран входу в систему з перенаправленням на адмін-панель.
+- **Custom Drawer**: Кастомізоване бокове меню з шапкою профілю адміністратора та навігацією.
+- **Дашборд**: Актуальна статистика (кількість новин, користувачів, записів аудиту) з використанням `useFocusEffect`.
+- **Списки на VirtualizedList**: Високопродуктивні списки новин, користувачів та логів із використанням методів оптимізації (`getItemCount`, `getItemLayout`).
+- **Динамічні маршрути та модалки**: Перегляд деталей новини `/news/[id]`, створення новини (`presentation: 'modal'`) та фільтрація (`presentation: 'formSheet'`).
+- **Журнал аудиту**: Автоматична фіксація дій (вхід, вихід, зміна статусу користувача, маніпуляції з новинами).
 
+## Інструкція із запуску
+1. Перейти у папку проєкту:
    ```bash
-   npm install
-   ```
+   cd lab3
+##  Встановити залежності:
+npm install
+## Запустити сервер розробки з очищенням кешу:
+npx expo start -c
+Контрольні запитання
+## 1. Яким чином виконується кастомізація бічного меню та хедера стекової навігації за допомогою drawerContent та screenOptions.header?
+Кастомізація бічного меню виконується шляхом передачі власного React-компонента у проп drawerContent компонента <Drawer> у файлі _layout.jsx (наприклад, drawerContent={(props) => <AdminDrawerContent {...props} />}). Це дозволяє повністю змінити верстку меню, додати аватар, інформацію про користувача та кастомні кнопки дій.
 
-2. Start the app
+Кастомізація хедера здійснюється через об'єкт screenOptions у файлі конфігурації макету (_layout.jsx). Там можна задавати параметри headerStyle, headerTintColor, headerTitleStyle, приховувати хедер (headerShown: false) або передавати кастомні кнопки у headerRight / headerLeft.
 
-   ```bash
-   npx expo start
-   ```
+## 2. У чому відмінність між нативними режимами модальних вікон presentation: 'modal' та presentation: 'formSheet'?
+presentation: 'modal': Відображає екран як стандартне модальне вікно (на iOS — картка, яка накриває більшу частину екрана з можливістю згортання свайпом донизу; на Android — спливаючий екран на увесь розмір).
 
-In the output, you'll find options to open the app in a
+presentation: 'formSheet': Відображає модальне вікно у вигляді компактної нижньої шторки (bottom sheet). За допомогою параметра sheetAllowedDetents можна регулювати висоту відкриття вікна (наприклад, [0.5, 0.88] або 'fitToContents'), що зручно для випадаючих фільтрів та малих форм.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## 3. Для чого використовується хук useFocusEffect і чим він відрізняється від стандартного useEffect?
+Хук useFocusEffect з expo-router / @react-navigation/native використовується для виконання побічних ефектів (наприклад, оновлення даних) кожного разу, коли екран стає активним (отримує фокус користувача в стеку або табах).
 
-You can start developing by editing the files inside the **src/app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **example** directory and create a blank **src/app** directory where you can start developing.
-
-### Other setup steps
-
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Основна відмінність від useEffect: useEffect спрацьовує лише при монтуванні компонента (першому рендері). У системі навігації екрани часто залишаються в пам'яті (в стеку) при переході на інші сторінки. Якщо повернутися на екран, useEffect не запуститься повторно, тоді як useFocusEffect спрацьовуватиме щоразу при поверненні на екран, забезпечуючи актуальність даних.
